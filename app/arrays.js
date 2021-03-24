@@ -4,7 +4,14 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
-}
+    
+    let returned= arr.splice(0,1)
+    console.log(arr)
+    arr.push(...returned)
+    console.log(arr)
+    return arr
+    
+    }
 
 
 // ------------------------------------------
@@ -16,6 +23,16 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
+    let largeNum = Math.max(...arr)
+    console.log(largeNum)
+    return largeNum
+
+    // let arr = [6, 4, 8, 33, 42, 10];
+    //  arr.find(element => element >=42);
+    
+    // let largestNum= 42
+    //  return foundIndex = arr.foundIndex(4)
+
 }
 
 
@@ -28,6 +45,13 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+
+    let output = [];
+
+        for (let x of arr)
+            output.push(x*arr.length);
+        return output
+
 }
 
 
@@ -63,9 +87,19 @@ let flights = [{
 
 function flightCost(destination, firstClass) {
     //***hint: use the find method***
-
+    
+    for (let index = 0; index < flights.length; index++) {
+        const flight = flights[index];
+        if(flight.to.toLowerCase()== destination.toLowerCase()){
+            if(firstClass){
+                return flight.prices.firstClass
+            }
+            else{
+                return flight.prices.standard
+            }
+        }
+    }
 }
-
 
 // ------------------------------------------
 
@@ -85,6 +119,18 @@ let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'P
 
 function findById(id) {
 
+    for (let index = 0; index < staff.length; index++) {
+        const st = staff[index];
+        console.log(st)
+        if(id==st.id){
+            return st
+        }
+        // if(st.name== st.id)
+        // {
+            // return st.name('')
+        // }
+    }
+    return {error: "No user with that id."}
 }
 
 
@@ -111,4 +157,12 @@ let theBand = {
 }
 
 function bandMemberDetails(name) {
+    for (let index = 0; index < theBand.members.length; index++) {
+        const band = theBand;
+        console.log('hi')
+        if(name == band.members[index].name){
+            return theBand.members[index].name + ' is in the band and plays the ' + theBand.members[index].instrument
+        }       
+    }
+    // return "Johnny P is in the band and plays the sax"
 }
